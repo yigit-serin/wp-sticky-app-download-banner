@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Sticky App Download Banner
  * Description: Adds a sticky banner for app downloads with customizable colors
- * Version: 1.2
+ * Version: 1.3
  * Author: Yigit Serin
  * Text Domain: sticky-app-banner
  */
@@ -75,7 +75,7 @@ function sticky_app_banner_footer() {
     $options = get_option('sticky_app_banner_options');
     
     // Check if banner is enabled
-    if (empty($options['enabled'])) {
+    if (empty($options['enabled']) || $options['enabled'] != 1) {
         return;
     }
     
@@ -327,7 +327,7 @@ add_action('wp_footer', 'sticky_app_banner_footer');
 function sticky_app_banner_menu() {
     add_options_page(
         'Sticky App Banner Settings',
-        'App Banner',
+        'Sticky App Banner Settings',
         'manage_options',
         'sticky-app-banner',
         'sticky_app_banner_settings_page'
@@ -456,6 +456,7 @@ function sticky_app_banner_enabled_callback() {
     $options = get_option('sticky_app_banner_options');
     $enabled = isset($options['enabled']) ? $options['enabled'] : 1;
     
+    echo '<input type="hidden" name="sticky_app_banner_options[enabled]" value="0">';
     echo '<label><input type="checkbox" name="sticky_app_banner_options[enabled]" value="1" ' . checked(1, $enabled, false) . '> Active</label>';
     echo '<p class="description">Check to display the banner on your site.</p>';
 }

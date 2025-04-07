@@ -51,6 +51,10 @@ Yes, you can customize the color of the button and rating stars through the sett
 
 ## Changelog
 
+### 1.3
+- Fixed checkbox saving issue for banner status
+- Updated admin menu title for clarity
+
 ### 1.2
 - Added ability to customize button text
 - Converted all text to English
